@@ -4,23 +4,23 @@
 
 CREATE TABLE IF NOT EXISTS CINEMA
 ( cinema_id         INTEGER PRIMARY KEY,
-  cinema_name       VARCHAR(20) ,
+  cinema_name       VARCHAR(100) ,
   available_seats   INTEGER
 );
 
 CREATE TABLE IF NOT EXISTS SEAT
 ( seat_id           INTEGER PRIMARY KEY,
   cinema_id         INTEGER REFERENCES CINEMA (cinema_id),
-  seat_name         VARCHAR(20)
+  seat_name         VARCHAR(100)
 );
 
 CREATE TABLE IF NOT EXISTS MOVIE
 ( movie_id          INTEGER PRIMARY KEY,
-  movie_name        VARCHAR(20) ,
-  duration          VARCHAR(20),
-  genre             VARCHAR(20),
-  img_link          VARCHAR(300),
-  description       VARCHAR(500),
+  movie_name        VARCHAR(100) ,
+  duration          VARCHAR(100),
+  genre             VARCHAR(100),
+  img_link          VARCHAR(500),
+  description       VARCHAR(5000),
   director          VARCHAR(100)
 );
 
@@ -42,14 +42,14 @@ CREATE TABLE IF NOT EXISTS MOVIE_RESERVATIONS
 
 CREATE TABLE IF NOT EXISTS USERS (
   user_id INTEGER PRIMARY KEY,
-  username VARCHAR(45) NOT NULL,
+  username VARCHAR(100) NOT NULL,
   email VARCHAR(255) NOT NULL,
-  password VARCHAR(60) NOT NULL ,
+  password VARCHAR(500) NOT NULL ,
   enabled BOOLEAN NOT NULL DEFAULT true
   );
 
 CREATE TABLE IF NOT EXISTS USER_ROLES (
   user_role_id INTEGER PRIMARY KEY,
   user_id INTEGER REFERENCES USERS(user_id),
-  role varchar(45) NOT NULL
+  role varchar(200) NOT NULL
   );

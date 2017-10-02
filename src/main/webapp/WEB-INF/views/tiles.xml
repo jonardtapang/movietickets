@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+	<definition name="standardLayout" template="/WEB-INF/views/_layouts/standard.jsp" />
+
+	<definition name="index" extends="standardLayout">
+		<put-attribute name="title" value="home" />
+		<put-attribute name="main" value="/WEB-INF/views/index.jsp" />
+		<put-attribute name="navigationTab" value="home" />
+	</definition>
+
+	<definition name="login" extends="standardLayout">
+		<put-attribute name="title" value="Login Page" />
+		<put-attribute name="main" value="/WEB-INF/views/login.jsp" />
+		<put-attribute name="navigationTab" value="" />
+	</definition>
+		
+	<definition name="denied" extends="standardLayout">
+		<put-attribute name="title" value="Access Denied" />
+		<put-attribute name="main" value="/WEB-INF/views/denied.jsp" />
+		<put-attribute name="navigationTab" value="" />
+	</definition>
+
+	<definition name="viewMovie" extends="standardLayout">
+		<put-attribute name="title" value="movie Details" />
+		<put-attribute name="main" value="/WEB-INF/views/viewMovie.jsp" />
+		<put-attribute name="navigationTab" value="" />
+	</definition>
+
+	<definition name="reservation" extends="standardLayout">
+		<put-attribute name="title" value="Seat Reservation" />
+		<put-attribute name="main" value="/WEB-INF/views/reservation.jsp" />
+		<put-attribute name="navigationTab" value="" />
+	</definition>
+		
+</tiles-definitions>

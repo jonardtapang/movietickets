@@ -2,15 +2,15 @@ insert into CINEMA (cinema_id, cinema_name, available_seats) values (1, 'cinema1
 insert into CINEMA (cinema_id, cinema_name, available_seats) values (2, 'cinema2', 20);
 insert into CINEMA (cinema_id, cinema_name, available_seats) values (3, 'cinema3', 20);
 
-insert into MOVIE (movie_id, movie_name, genre, duration, img_link, description, director)
+insert into MOVIE (movie_id, movie_name, genre, duration, img_link, description, director, rating)
             values
-            (1, 'Kita-Kita', 'comedy', '2hrs', 'https://cdn3.clickthecity.com/images/movies/poster/215/16092.jpg', 'Comedy romantic film', 'Empoy');
-insert into MOVIE (movie_id, movie_name, genre, duration, img_link, description, director)
+            (1, 'Kita-Kita', 'comedy', '2hrs', 'https://cdn3.clickthecity.com/images/movies/poster/215/16092.jpg', 'Comedy romantic film', 'Empoy', 'G');
+insert into MOVIE (movie_id, movie_name, genre, duration, img_link, description, director, rating)
             values
-            (2, 'Annabelle Creation', 'Horror', '2hrs', 'https://cdn3.clickthecity.com/images/movies/poster/215/15767.jpg', 'Horror film', 'Foreigner');
-insert into MOVIE (movie_id, movie_name, genre, duration, img_link, description, director)
+            (2, 'Annabelle Creation', 'Horror', '2hrs', 'https://cdn3.clickthecity.com/images/movies/poster/215/15767.jpg', 'Horror film', 'Foreigner', 'SPG');
+insert into MOVIE (movie_id, movie_name, genre, duration, img_link, description, director, rating)
             values
-            (3, 'Zombies', 'Horror', '2hrs', 'https://cdn3.clickthecity.com/images/movies/poster/215/16146.jpg', 'Horror film', 'Foreigner');
+            (3, 'Zombies', 'Horror', '2hrs', 'https://cdn3.clickthecity.com/images/movies/poster/215/16146.jpg', 'Horror film', 'Foreigner', 'SPG');
 
 
 insert into SCREENING(screen_id, movie_id, cinema_id, screen_start, screen_end)

@@ -1,5 +1,7 @@
 package movietickets.domain.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,11 +21,12 @@ public class MovieReservations {
 	private Long reserveId;
 	
 	@ManyToOne
-	@JoinColumn(name = "screening_id")
+	@JoinColumn(name = "screen_id")
 	private Screening screening;
 	
 	@ManyToOne
 	@JoinColumn(name = "seat_id")
+	@JsonBackReference
 	private Seat seat;
 
 	public MovieReservations() {

@@ -1,5 +1,7 @@
 package movietickets.domain.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,13 +19,15 @@ public class Cinema {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "cinema_id")
 	private Long cinemaId;
-	
+
+	@Column(name = "cinema_name")
 	private String name;
 
 	@Column(name = "available_seats")
 	private Long availableSeats;
 	
 	@OneToMany(mappedBy="cinema")
+	@JsonManagedReference
 	private List<Seat> seats;
 
 	@OneToMany(mappedBy = "cinema")

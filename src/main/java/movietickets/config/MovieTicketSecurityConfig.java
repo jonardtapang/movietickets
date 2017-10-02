@@ -33,11 +33,10 @@ public class MovieTicketSecurityConfig extends WebSecurityConfigurerAdapter{
                 .accessDeniedPage("/denied")
                 .and()
 
-
                 .authorizeRequests()
-                .antMatchers("/tickets").hasRole("USER")
-                .antMatchers("/tickets/*").hasAnyRole("USER","ADMIN")
-                .antMatchers("/tickets/**").hasRole("ADMIN")
+                //.antMatchers("/movie/*").hasRole("USER")
+                .antMatchers("/movie/*").hasAnyRole("USER","ADMIN")
+                .antMatchers("/movie/**/").hasRole("ADMIN")
                 .and()
                 .logout()
                 .permitAll()
@@ -45,9 +44,28 @@ public class MovieTicketSecurityConfig extends WebSecurityConfigurerAdapter{
 
     }
 
+/*     @Override
+     protected void configure(HttpSecurity http) throws Exception {
+           http.authorizeRequests()
+          .antMatchers("/hello").access("hasRole('ROLE_ADMIN')")
+          .anyRequest().permitAll()
+          .and()
+            .formLogin().loginPage("/login")
+            .usernameParameter("username").passwordParameter("password")
+          .and()
+            .logout().logoutSuccessUrl("/login?logout")
+           .and()
+           .exceptionHandling().accessDeniedPage("/403")
+          .and()
+            .csrf();
+         }*/
+
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception{
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordencoder());
+       /* auth.inMemoryAuthentication().withUser("user").password("user1").roles("USER")
+                .and()
+                .withUser("admin").password("admin1").roles("ADMIN");*/
     }
 
     @Bean(name="passwordEncoder")

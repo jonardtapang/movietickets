@@ -1,8 +1,8 @@
 package movietickets.repository;
 
 import movietickets.domain.model.Cinema;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
@@ -10,9 +10,9 @@ import java.util.List;
  * Created by jmtapang on 9/28/17.
  */
 @Repository
-public interface CinemaRepository extends CrudRepository<Cinema, Long> {
+public interface CinemaRepository extends JpaRepository<Cinema, Long> {
 
-    //Cinema findById(int cinemaId);
+    Cinema findByCinemaId(Long cinemaId);
 
     List<Cinema> findAll();
 

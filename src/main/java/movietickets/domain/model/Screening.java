@@ -1,5 +1,8 @@
 package movietickets.domain.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import java.util.Date;
 import java.util.List;
 
@@ -19,7 +22,7 @@ public class Screening {
 
 	@Id
 	@GeneratedValue
-	@Column(name = "screening_id")
+	@Column(name = "screen_id")
 	private Long screeningId;
 
 	@ManyToOne
@@ -28,9 +31,11 @@ public class Screening {
 
 	@ManyToOne
 	@JoinColumn(name="movie_id")
+	@JsonBackReference
 	private Movie movie;
 
 	@OneToMany(mappedBy = "screening")
+	@JsonManagedReference
 	private List<MovieReservations> reservations;
 
 	@Temporal(TemporalType.TIMESTAMP)
@@ -86,5 +91,35 @@ public class Screening {
 
 	public void setScreenEnd(Date screenEnd) {
 		this.screenEnd = screenEnd;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+
+		Screening screening = (Screening) o;
+
+		if (screeningId != null ? !screeningId.equals(screening.screeningId) : screening.screeningId != null)
+			return false;
+		if (cinema != null ? !cinema.equals(screening.cinema) : screening.cinema != null) return false;
+		if (movie != null ? !movie.equals(screening.movie) : screening.movie != null) return false;
+		if (reservations != null ? !reservations.equals(screening.reservations) : screening.reservations != null)
+			return false;
+		if (screenStart != null ? !screenStart.equals(screening.screenStart) : screening.screenStart != null)
+			return false;
+		return screenEnd != null ? screenEnd.equals(screening.screenEnd) : screening.screenEnd == null;
+
+	}
+
+	@Override
+	public int hashCode() {
+		int result = screeningId != null ? screeningId.hashCode() : 0;
+		result = 31 * result + (cinema != null ? cinema.hashCode() : 0);
+		result = 31 * result + (movie != null ? movie.hashCode() : 0);
+		result = 31 * result + (reservations != null ? reservations.hashCode() : 0);
+		result = 31 * result + (screenStart != null ? screenStart.hashCode() : 0);
+		result = 31 * result + (screenEnd != null ? screenEnd.hashCode() : 0);
+		return result;
 	}
 }

@@ -1,5 +1,7 @@
 package movietickets.domain.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,6 +24,7 @@ public class Seat {
 	
 	@ManyToOne
 	@JoinColumn(name = "cinema_id")
+	@JsonBackReference
 	private Cinema cinema;
 
 	@OneToMany(mappedBy = "seat")
